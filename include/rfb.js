@@ -102,6 +102,7 @@ var that           = {},  // Public API methods
     fb_width       = 0,
     fb_height      = 0,
     fb_name        = "",
+    title          = "",
 
     scan_imgQ_rate = 40, // 25 times per second or so
     last_req_time  = 0,
@@ -881,10 +882,17 @@ init_msg = function() {
         setTimeout(checkEvents, conf.check_rate);
         setTimeout(scan_tight_imgQ, scan_imgQ_rate);
 
-        if (conf.encrypt) {
-            updateState('normal', "Connected (encrypted) to: " + fb_name);
+        if((defaults.hasOwnProperty('title') && (defaults["title"].length > 0))) {
+            title = defaults["title"];
         } else {
-            updateState('normal', "Connected (unencrypted) to: " + fb_name);
+            title = fb_name;
+        }
+        
+
+        if (conf.encrypt) {
+            updateState('normal', "Connected (encrypted) to: " + title);
+        } else {
+            updateState('normal', "Connected (unencrypted) to: " + title);
         }
         break;
     }
