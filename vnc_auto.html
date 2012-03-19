@@ -84,13 +84,12 @@
         }
 
         window.onload = function () {
-            var host, port, password, path, title;
+            var host, port, password, path;
 
             $D('sendCtrlAltDelButton').style.display = "inline";
             $D('sendCtrlAltDelButton').onclick = sendCtrlAltDel;
 
-            title = unescape(WebUtil.getQueryVar('title', 'noVNC'));
-            document.title = title;
+            document.title = unescape(WebUtil.getQueryVar('title', 'noVNC'));
             host = WebUtil.getQueryVar('host', null);
             port = WebUtil.getQueryVar('port', null);
             password = WebUtil.getQueryVar('password', '');
@@ -109,8 +108,7 @@
                            'shared':       WebUtil.getQueryVar('shared', true),
                            'view_only':    WebUtil.getQueryVar('view_only', false),
                            'updateState':  updateState,
-                           'onPasswordRequired':  passwordRequired,
-                           'title':        title});
+                           'onPasswordRequired':  passwordRequired});
             rfb.connect(host, port, password, path);
         };
         </script>
