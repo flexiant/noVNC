@@ -880,12 +880,13 @@ init_msg = function() {
         /* Start pushing/polling */
         setTimeout(checkEvents, conf.check_rate);
         setTimeout(scan_tight_imgQ, scan_imgQ_rate);
-
+        /*
         if (conf.encrypt) {
             updateState('normal', "Connected (encrypted) to: " + fb_name);
         } else {
             updateState('normal', "Connected (unencrypted) to: " + fb_name);
-        }
+        }*/
+        updateState('normal', "Connected");                                            
         break;
     }
     //Util.Debug("<< init_msg");
